@@ -1,7 +1,7 @@
 'use strict';
 
-function Jact() {
-	this.state = {};
+function Jact(initialState) {
+	this.state = initialState || {};
 	this.stateBindings = {};
 }
 

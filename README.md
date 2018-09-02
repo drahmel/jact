@@ -1,5 +1,4 @@
-# jact
-jQuery React -- implementing the good parts of React into a compact jQuery library
+# Jact -- implementing the good parts of React into a compact library that integrates with jQuery
 
 I love React, but some projects it isn't the perfect fit. For example:
 
@@ -10,9 +9,11 @@ I love React, but some projects it isn't the perfect fit. For example:
 
 I decided to create a simple and ultra-compact library that could give me some of the things I love about React within an easily deployable jQuery-compatible package.
 
+Note that this started as a complete integration with jQuery, but I soon realized that it could be used without jQuery (and with any framework -- even React) where a state-based structure is desired.
+
 # Project Objectives
 
-* Create state like React
+* Create interactive "state" like React
 
 # What it won't do
 
@@ -66,11 +67,10 @@ Or you can use it for React-style handling of input boxes:
 
 ```javascript
 $("#testIn").bind("keyup", function (event) {
-    var b = j.getState("b");
-    b += event.key;
-    j.setState({b:b});
+    var name = j.getState("name");
+    name += event.key;
+    j.setState({name:name});
     return false;
 });
-  </script>
 ```
 
