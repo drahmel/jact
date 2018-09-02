@@ -17,28 +17,60 @@ I decided to create a simple and ultra-compact library that could give me some o
 # What it won't do
 
 * Replace for React
+* Implement a Virtual DOM
 * Implement JSX
 
 # Examples
 
+Simply load the library into your page:
+
 ```javascript
   <script src="js/Jact.js"></script>
-  <script>
-  var j = new Jact();
-  j.bindElement("a", function(newVal) { $("#mainHeader").html(newVal); });
-  j.bindElement("b", function(newVal) { $("#testIn").val(newVal); });
-  j.setState({a:"Hello"});
-  $("#testIn").bind("keyup", function (event) {
-    console.log(event, j.getState("b"));
+```
+
+Instantiate that object pass the initial state:
+
+```javascript
+<script>
+var j = new Jact({name:"Joe"});
+</script>
+```
+
+Then you can bind any handlers to changes in state:
+
+```javascript
+j.bindElement("name", function(newVal) { $("#mainHeader").html(newVal); });
+```
+
+Noticed that unlike React where you put the state changes in your render() function, for example, with Jact you simply use a closure to do whatever you want when the state changes. For example, you could have the state change update 4 different UI elements.
+
+```javascript
+j.bindElement("name", function(newVal) { $("#mainHeader").html(newVal); });
+j.bindElement("name", function(newVal) { $("#welcomeMessage").html(newVal); });
+j.bindElement("name", function(newVal) { $("#accountMenuTitle").html(newVal); });
+```
+
+Or:
+
+```javascript
+j.bindElement("name", function(newVal) {
+    $("#mainHeader").html(newVal); });
+    $("#welcomeMessage").html(newVal);
+    $("#accountMenuTitle").html(newVal);
+});
+```
+
+This is perfect for libraries like D3.js where changes in your data can call directly into your D3 object to propogate the changes to your graph.
+
+Or you can use it for React-style handling of input boxes:
+
+```javascript
+$("#testIn").bind("keyup", function (event) {
     var b = j.getState("b");
-    if(event.keyCode != 8) {
-      b += event.key;
-    } else {
-      b += "BS";
-    }
+    b += event.key;
     j.setState({b:b});
     return false;
-  });
+});
   </script>
 ```
 
