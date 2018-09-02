@@ -1,23 +1,27 @@
-# Jact -- implementing the good parts of React into a compact library that integrates with jQuery
+# Jact
+
+## Implementing the good parts of React into a compact library that integrates with jQuery
 
 I love React, but some projects it isn't the perfect fit. For example:
 
-* When a small footprint is required -- Even compressed, React has a large base footprint. Most React apps are much larger than an equivalent jQuery style app.
-* Compiler is overkill
-* In-place tweaks are required
+* Small JavaScript footprint -- Even compressed, React has a large base footprint (hundreds of K). Most React apps are much larger than an equivalent jQuery style app.
 * Multiple 3rd Party libraries are used -- React doesn't play well with other libraries such as D3.js, Google Maps, or other libraries that make their own use of the DOM
+* Compile is overkill -- Running a compiler for development requires a lot of resources compared to traditional JavaScript development
+* In-place tweaks are required -- A traditional JavaScript app can be editied even on a NodeMCU-based web server
 
-I decided to create a simple and ultra-compact library that could give me some of the things I love about React within an easily deployable jQuery-compatible package.
+I decided to create a simple and ultra-compact (<2K) library that could give me some of the things I love about React within an easily deployable jQuery-compatible package.
 
-Note that this started as a complete integration with jQuery, but I soon realized that it could be used without jQuery (and with any framework -- even React) where a state-based structure is desired.
+> Note that Jact started as a complete integration with jQuery, but I soon realized that it could be used with any framework -- even React -- where a state-based structure is desired.
 
 # Project Objectives
 
 * Create interactive "state" like React
+* Allow changes in state values to update UI elements and other items
+* Adopt the unidirectional data flow to minimize stale data
 
 # What it won't do
 
-* Replace for React
+* Replace React
 * Implement a Virtual DOM
 * Implement JSX
 
@@ -26,7 +30,7 @@ Note that this started as a complete integration with jQuery, but I soon realize
 Simply load the library into your page:
 
 ```javascript
-  <script src="js/Jact.js"></script>
+<script src="js/Jact.js"></script>
 ```
 
 Instantiate that object pass the initial state:
