@@ -11,8 +11,6 @@ I love React, but some projects it isn't the perfect fit. For example:
 
 I decided to create a simple and ultra-compact (<2K) library that could give me some of the things I love about React within an easily deployable jQuery-compatible package.
 
-> Note that Jact started as a complete integration with jQuery, but I soon realized that it could be used with any framework -- even React -- where a state-based structure is desired.
-
 # Project Objectives
 
 * Create interactive "state" like React
